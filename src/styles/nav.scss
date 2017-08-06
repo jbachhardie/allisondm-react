@@ -1,0 +1,14 @@
+.nav-bar {
+  font-family: $family-title;
+  .logo {
+    height: 300px;
+    filter: invert(100%);
+  }
+  .nav-menu {
+    text-transform: uppercase;
+    padding-top: 60px;
+  }
+  .link {
+    margin-left: 3rem;
+  }
+}

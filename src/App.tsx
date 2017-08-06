@@ -1,20 +1,68 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Entry } from 'contentful';
+import { kebabCase } from 'lodash';
+import { Nav, Page } from './components';
+import { SlideData } from './components/slide';
+import contentful from './modules/contentful-client';
 
-const logo = require('./logo.svg');
+type PageData = {
+  title: string;
+  slides: SlideData[];
+};
 
-class App extends React.Component<{}, {}> {
+interface AppState {
+  pages: PageData[];
+}
+
+// tslint:disable no-any
+const processData = (page: Entry<{ title: string; slides: Entry<any>[] }>) => ({
+  title: page.fields.title,
+  slides: page.fields.slides.map((slide: Entry<any>) => ({
+    fields: slide.fields,
+    type: slide.sys.contentType.sys.id as any
+  }))
+});
+// tslint:enable no-any
+
+const getMatchingPage = (pages: PageData[], target: string): PageData =>
+  pages.find(page => kebabCase(page.title) === target) || {
+    title: target,
+    slides: []
+  };
+
+class App extends React.Component<{}, AppState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { pages: [] };
+  }
+  componentDidMount() {
+    contentful.getEntries({ content_type: 'page' }).then(entry => {
+      this.setState({
+        pages: entry.items.map(processData)
+      });
+    });
+  }
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
+    const { pages } = this.state;
+    if (pages.length > 0) {
+      return (
+        <Router>
+          <div>
+            <Route exact path="/" render={() => <Redirect to="/main" />} />
+            <Route
+              path="/:page"
+              render={props =>
+                <Page {...getMatchingPage(pages, props.match.params.page)}>
+                  <Nav pages={pages.map(page => page.title)} />
+                </Page>}
+            />
+          </div>
+        </Router>
+      );
+    } else {
+      return <div />;
+    }
   }
 }
 

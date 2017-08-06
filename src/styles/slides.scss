@@ -1,0 +1,16 @@
+.parallax {
+  height: 100vh;
+  overflow: hidden;
+}
+.parallax > * {
+  height: 200%;
+  position: relative;
+  top: -100%;
+}
+.slide-widescreen {
+  background-size: auto 100vh;
+  @media screen and (min-aspect-ratio: 16/9) {
+    background-size: 100%;
+  }
+  background-position: center top;
+}

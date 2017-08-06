@@ -1,0 +1,10 @@
+@import "bulma/sass/utilities/initial-variables";
+
+$primary: $white-ter;
+$family-sans-serif: "Droid Sans", sans-serif;
+$family-title: "Antonio", sans-serif;
+
+@import "bulma/bulma";
+
+@import "styles/nav";
+@import "styles/slides";
