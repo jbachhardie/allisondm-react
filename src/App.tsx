@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Entry } from 'contentful';
 import { kebabCase } from 'lodash';
-import { Nav, Page } from './components';
+import { Nav, Page, Footer } from './components';
 import { SlideData } from './components/slide';
 import contentful from './modules/contentful-client';
 
@@ -57,6 +57,7 @@ class App extends React.Component<{}, AppState> {
                   <Nav pages={pages.map(page => page.title)} />
                 </Page>}
             />
+            <Footer />
           </div>
         </Router>
       );
