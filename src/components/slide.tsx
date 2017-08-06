@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Asset } from 'contentful';
 import WidescreenSlide from './widescreen-slide';
 import TextSlide from './text-slide';
+import GridSlide from './grid-slide';
 import controller from '../modules/scroll-controller';
 import { Scene } from '../modules/scrollmagic';
 import { Linear } from '../modules/gsap';
@@ -15,8 +16,8 @@ export type WidescreenSlideData = {
 export type GridSlideData = {
   type: 'imageGridSlide';
   fields: {
-    images: Array<Asset>;
-    textBlocks: Array<string>;
+    images: Asset[];
+    textBlocks: string[];
   };
 };
 export type TextSlideData = {
@@ -62,6 +63,9 @@ class Slide extends React.Component<SlideProps, SlideState> {
     }
     if (slide.type === 'textSlide') {
       return <TextSlide {...slide.fields} />;
+    }
+    if (slide.type === 'imageGridSlide') {
+      return <GridSlide {...slide.fields} />;
     }
     return <div />;
   }
