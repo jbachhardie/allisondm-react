@@ -4,7 +4,13 @@ import { Entry } from 'contentful';
 import { kebabCase } from 'lodash';
 import { Nav, Page, Footer } from './components';
 import { SlideData } from './components/slide';
-import contentful from './modules/contentful-client';
+import { ContentfulClientApi } from 'contentful';
+
+const contentful: ContentfulClientApi = window.location.search.includes(
+  'preview'
+)
+  ? require('./modules/contentful-preview-client').default
+  : require('./modules/contentful-client').default;
 
 type PageData = {
   title: string;
@@ -26,7 +32,7 @@ const processData = (page: Entry<{ title: string; slides: Entry<any>[] }>) => ({
 // tslint:enable no-any
 
 const getMatchingPage = (pages: PageData[], target: string): PageData =>
-  pages.find(page => kebabCase(page.title) === target) || {
+  pages.find(page => kebabCase(page.title) === kebabCase(target)) || {
     title: target,
     slides: []
   };
