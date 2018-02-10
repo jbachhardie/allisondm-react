@@ -5094,6 +5094,9 @@ label.panel-block {
   .nav-bar .link {
     margin-left: 3rem; }
 
+.nav-bar-container {
+  padding: 3rem 1.5rem; }
+
 .parallax {
   height: 100vh;
   overflow: hidden; }
@@ -5104,6 +5107,8 @@ label.panel-block {
   top: -100%; }
 
 .slide-widescreen {
+  height: 100vh;
+  background-attachment: fixed;
   background-size: auto 100vh;
   background-position: center top; }
   @media screen and (min-aspect-ratio: 16 / 9) {
@@ -5123,7 +5128,7 @@ label.panel-block {
   top: 0;
   height: 100%;
   width: 100%;
-  transition: opacity .25s ease;
+  transition: opacity 0.25s ease;
   z-index: 2; }
 
 .image-cell:hover .overlay {

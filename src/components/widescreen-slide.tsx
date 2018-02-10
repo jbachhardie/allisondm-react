@@ -5,11 +5,11 @@ export interface WidescreenSlideProps {
   className?: string;
 }
 
-class WidescreenSlide extends React.Component<WidescreenSlideProps, {}> {
+class WidescreenSlide extends React.Component<WidescreenSlideProps> {
   render() {
     return (
       <div
-        className="section slide-widescreen"
+        className="slide-widescreen"
         style={{
           backgroundImage: `url(${this.props.imageUrl})`
         }}

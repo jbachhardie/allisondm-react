@@ -22,8 +22,9 @@
   },
   "devDependencies": {
     "node-sass-chokidar": "0.0.3",
-    "npm-run-all": "^4.0.2",
-    "react-scripts-ts": "2.5.0"
+    "npm-run-all": "^4.1.2",
+    "react-scripts-ts": "2.5.0",
+    "typescript": "^2.7.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/app.scss src/app.css",

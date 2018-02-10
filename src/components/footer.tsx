@@ -23,7 +23,7 @@ class Footer extends React.Component<FooterProps, {}> {
                 className="has-text-info"
               >
                 MIT licensed
-              </a>. Content is © 2017 Allison Decercq-Matthas.
+              </a>. Content is © 2017 Allison Declercq-Matthas.
             </p>
             <p>
               <a href="https://www.contentful.com">

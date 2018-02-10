@@ -8,6 +8,8 @@
   top: -100%;
 }
 .slide-widescreen {
+  height: 100vh;
+  background-attachment: fixed;
   background-size: auto 100vh;
   @media screen and (min-aspect-ratio: 16/9) {
     background-size: 100%;
@@ -28,7 +30,7 @@
     top: 0;
     height: 100%;
     width: 100%;
-    transition: opacity .25s ease;
+    transition: opacity 0.25s ease;
     z-index: 2;
   }
 }

@@ -11,12 +11,10 @@ Source code is MIT licensed.
 The site is built using React. It uses:
 
 * React Router for navigation.
-* GSAP for animation.
-* ScrollMagic for scroll effects.
 * Bulma as a CSS framework.
 * Contentful as a CMS backend.
 
-The use of Contentful to deliver content to a single-page application allows 
+The use of Contentful to deliver content to a single-page application allows
 the site to be hosted at minimal cost (configured here to deploy to Firebase
 but can be hosted on any static hosting) while allowing real-time content
 editing by the author.
