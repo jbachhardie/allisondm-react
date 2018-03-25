@@ -3,6 +3,8 @@ import { Icon } from 'react-fa';
 
 export interface FooterProps {}
 
+const currentYear = new Date().getFullYear();
+
 class Footer extends React.Component<FooterProps, {}> {
   render() {
     return (
@@ -23,7 +25,7 @@ class Footer extends React.Component<FooterProps, {}> {
                 className="has-text-info"
               >
                 MIT licensed
-              </a>. Content is © 2017 Allison Declercq-Matthas.
+              </a>. Content is © {currentYear} Allison Declercq-Matthas.
             </p>
             <p>
               <a href="https://www.contentful.com">
